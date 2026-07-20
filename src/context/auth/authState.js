@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import authContext from "./authContext.js";
 import authReducer from "./authReducer.js";
 import clienteAxios from "@/config/clienteAxios.js";
-import { 
+import {
     REGISTRO_EXITOSO, REGISTRO_ERROR,
     CONFIRMACION_EXITOSA, CONFIRMACION_ERROR,
     LOGIN_EXITOSO, LOGIN_ERROR,
@@ -14,7 +14,7 @@ import {
     LIMPIAR_ALERTA
 } from '@/types'
 
-const AuthState = ({children}) => {
+const AuthState = ({ children }) => {
     const router = useRouter();
 
     const initialState = {
@@ -22,8 +22,7 @@ const AuthState = ({children}) => {
         autenticado: null,
         usuario: null,
         mensaje: null,
-        error: null,
-        cargando: null
+        error: null
     }
 
     const [state, dispatch] = useReducer(authReducer, initialState);
@@ -33,7 +32,7 @@ const AuthState = ({children}) => {
         const autenticarUsuario = async () => {
             const token = localStorage.getItem('token');
 
-            if(!token) {
+            if (!token) {
                 return
             }
 
@@ -63,7 +62,7 @@ const AuthState = ({children}) => {
         }
         autenticarUsuario();
     }, [state.token])
-    
+
     const registrarUsuario = async datos => {
         try {
             const respuesta = await clienteAxios.post('/usuarios', datos)
@@ -80,7 +79,7 @@ const AuthState = ({children}) => {
     }
 
     const confirmarToken = async (mensaje, error) => {
-        if(!error) {
+        if (!error) {
             dispatch({
                 type: CONFIRMACION_EXITOSA,
                 payload: mensaje
@@ -105,7 +104,7 @@ const AuthState = ({children}) => {
             localStorage.removeItem('token');
             dispatch({
                 type: LOGIN_ERROR,
-                payload: error.response.data.msg
+                payload: error.response?.data?.msg || 'Error al iniciar sesión'
             })
         }
     }
@@ -124,7 +123,7 @@ const AuthState = ({children}) => {
             })
         }
     }
-    
+
     const cambiarContraseña = async (nuevoPassword, token) => {
         try {
             await clienteAxios.post(`/usuarios/olvidePassword/${token}`, nuevoPassword);
@@ -170,7 +169,7 @@ const AuthState = ({children}) => {
                 limpiarAlerta,
                 iniciarSesion,
                 olvidePassword,
-                cambiarContraseña,  
+                cambiarContraseña,
                 cerrarSesion
             }}
         >

@@ -10,7 +10,7 @@ import {
 } from '@/types'
 
 const AuthReducer = (state, action) => {
-    switch(action.type) {
+    switch (action.type) {
         // Enviar mensaje EXITO
         case REGISTRO_EXITOSO:
         case CONFIRMACION_EXITOSA:
@@ -21,7 +21,7 @@ const AuthReducer = (state, action) => {
                 mensaje: action.payload,
                 error: false
             }
-                
+
         // Enviar mensaje ERROR
         case REGISTRO_ERROR:
         case CONFIRMACION_ERROR:
@@ -33,7 +33,7 @@ const AuthReducer = (state, action) => {
                 mensaje: action.payload,
                 error: true
             }
-        
+
         case LOGIN_EXITOSO:
             return {
                 ...state,
@@ -48,7 +48,7 @@ const AuthReducer = (state, action) => {
                 autenticado: true,
                 usuario: action.payload
             }
-        
+
         case CERRAR_SESION:
             return {
                 ...state,
@@ -64,7 +64,7 @@ const AuthReducer = (state, action) => {
                 error: null
             }
 
-            default:
+        default:
             return state;
     }
 }
