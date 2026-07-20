@@ -153,7 +153,7 @@ RestaurantSystem_Next.js_Client/
 
 ## 👨💻 Author
 
-**Camilo Velásquez Botero**  
+**Camilo Velasquez Botero**  
 Full Stack Web Developer  
 - [GitHub](https://github.com/CamiloVelasquezBotero)
 - [LinkedIn](https://www.linkedin.com/in/camilodeveloper)
