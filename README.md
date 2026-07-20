@@ -19,6 +19,8 @@
 > 🔑 **Staff Demo Account Credentials:**  
 > **User:** `prueba@prueba.com`  
 > **Password:** `password`
+> 
+> ⏳ **Note:** The first request may take **30 to 60 seconds** to load as the server initializes. Please be patient.
 
 ---
 
